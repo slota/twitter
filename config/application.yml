@@ -1,2 +1,6 @@
-	api_key: "yE4QTEUQ96pfr1O3nEtHfkEEu"
-  api_secret: "pdbSYPBIUmX5gmQkWXcvXQR8w0sllaMAF66O5UzCCnqAVFTKs6"
+api_key: yE4QTEUQ96pfr1O3nEtHfkEEu
+api_secret: pdbSYPBIUmX5gmQkWXcvXQR8w0sllaMAF66O5UzCCnqAVFTKs6
+
+development:
+  api_key: SHM9LZpu9tlcAKDFmVDSEpSQe
+  api_secret: Lqnz3dBoU58aib8LuMyhvKYMr2PkqGAv6rRHpwPZDi7bR6yjpX
