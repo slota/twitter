@@ -2,6 +2,14 @@
 
 <% if current_user %>
   <p>Hello, <%= current_user.name %></p>
+  <%= image_tag current_user.image %>
+  <%= current_user.description %>
+  Current Followers:<%= current_user.friends_count %>
+  Amount Following:<%= current_user.followers_count %>
+  Total Tweets:<%= current_user.statuses_count %>
+  <ul><% @tweets.each do |tweet| %>
+    <li><%= tweet.text %></li>
+  <% end %></ul>
   <%= link_to "Logout", logout_path %>
 <% else %>
   <%= link_to "Login", login_path %>
