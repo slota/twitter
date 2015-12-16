@@ -7,11 +7,6 @@ class User < ActiveRecord::Base
       new_user.screen_name        = auth_info.extra.raw_info.screen_name
       new_user.oauth_token        = auth_info.credentials.token
       new_user.oauth_token_secret = auth_info.credentials.secret
-      new_user.description        = auth_info.info.description
-      new_user.image              = auth_info.info.image
-      new_user.friends_count      = auth_info.extra.raw_info.friends_count
-      new_user.followers_count    = auth_info.extra.raw_info.followers_count
-      new_user.statuses_count     = auth_info.extra.raw_info.statuses_count
     end
   end
 
@@ -20,5 +15,25 @@ class User < ActiveRecord::Base
 
     # hit the twitter API and grab the tweets for that user
     #https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=2
+  end
+
+  def image
+    twitter_client(self).current_user.profile_image_url
+  end
+
+  def followers_count
+    twitter_client(self).current_user.followers_count
+  end
+
+  def friends_count
+    twitter_client(self).current_user.friends_count
+  end
+
+  def statuses_count
+    twitter_client(self).current_user.statuses_count
+  end
+
+  def description
+    twitter_client(self).current_user.description
   end
 end

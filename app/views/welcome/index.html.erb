@@ -2,11 +2,18 @@
 
 <% if current_user %>
   <p>Hello, <%= current_user.name %></p>
-  <%= image_tag current_user.image %>
-  <%= current_user.description %>
-  Current Followers:<%= current_user.friends_count %>
-  Amount Following:<%= current_user.followers_count %>
-  Total Tweets:<%= current_user.statuses_count %>
+  <%= image_tag @image %>
+  <%= @description %>
+  My followers count:<%= @followers_count %>
+  My friends count: <%= @friends_count %>
+  My tweet number: <%= @statuses_count %>
+
+
+
+
+
+
+
   <ul><% @tweets.each do |tweet| %>
     <li><%= tweet.text %></li>
   <% end %></ul>
