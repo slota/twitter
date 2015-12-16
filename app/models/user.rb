@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ::Client
   def self.from_omniauth(auth_info)
     where(uid: auth_info[:uid]).first_or_create do |new_user|
       new_user.uid                = auth_info.uid
@@ -7,5 +8,12 @@ class User < ActiveRecord::Base
       new_user.oauth_token        = auth_info.credentials.token
       new_user.oauth_token_secret = auth_info.credentials.secret
     end
+  end
+
+  def tweets
+    twitter_client(self).user_timeline(screen_name)
+
+    # hit the twitter API and grab the tweets for that user
+    #https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=2
   end
 end

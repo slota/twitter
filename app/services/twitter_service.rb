@@ -1,11 +1,12 @@
 class TwitterService
-  attr_reader: client
+  attr_reader :client
 
   def initialize(current_user)
     @client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = "YOUR_CONSUMER_KEY"
-    config.consumer_secret     = "YOUR_CONSUMER_SECRET"
-    config.access_token        = "YOUR_ACCESS_TOKEN"
-    config.access_token_secret = "YOUR_ACCESS_SECRET"
+      config.consumer_key        = "SHM9LZpu9tlcAKDFmVDSEpSQe"
+      config.consumer_secret     = "Lqnz3dBoU58aib8LuMyhvKYMr2PkqGAv6rRHpwPZDi7bR6yjpX"
+      config.access_token        = "378211029-DfbDvspu3r5NsqNxrP3ZHpYQKAFouxKUvMyLwKJd"
+      config.access_token_secret = "iqZqFjUQdAoNKPvQvt3zhPTWINX8YeIbx0ANOgAPRd354"
+    end
   end
 end
