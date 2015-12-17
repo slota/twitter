@@ -1,3 +1,10 @@
+test:
+ test_uid: "378211029"
+ test_access_token: "378211029-DfbDvspu3r5NsqNxrP3ZHpYQKAFouxKUvMyLwKJd"
+ test_access_token_secret: "iqZqFjUQdAoNKPvQvt3zhPTWINX8YeIbx0ANOgAPRd354"
+ consumer_key: SHM9LZpu9tlcAKDFmVDSEpSQe
+ consumer_secret: Lqnz3dBoU58aib8LuMyhvKYMr2PkqGAv6rRHpwPZDi7bR6yjpX
+
 development:
   consumer_key: SHM9LZpu9tlcAKDFmVDSEpSQe
   consumer_secret: Lqnz3dBoU58aib8LuMyhvKYMr2PkqGAv6rRHpwPZDi7bR6yjpX
