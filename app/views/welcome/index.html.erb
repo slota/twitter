@@ -37,12 +37,17 @@
 
     </p>
 
-    <ul><% @twitter_data.user_timeline.take(10).each do |tweet| %>
+    <ul><% @twitter_data.home_timeline.take(10).each do |tweet| %>
       <li>
         <div class="row">
         <div class="col s12  m10">
           <div class="card blue">
             <div class="card-content white-text">
+              <img src="<%= tweet.user.profile_image_url  %>">
+              <h5><%= tweet.user.screen_name %></h5>
+              <% if tweet.media.present? %>
+              <img src="<%= tweet.media.first.media_url %>">
+              <% end %><br>
               <span class="card-title"><%= tweet.text %></span>
             </div>
             <div class="card-action">
