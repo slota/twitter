@@ -8,3 +8,7 @@ test:
 development:
   consumer_key: SHM9LZpu9tlcAKDFmVDSEpSQe
   consumer_secret: Lqnz3dBoU58aib8LuMyhvKYMr2PkqGAv6rRHpwPZDi7bR6yjpX
+
+production:
+  consumer_key: qIwA1pZ5OHXlQI6FmRcXKeLae
+  consumer_secret: 1W1h69pgJyE6eOaMApd2RKjweiF16pKuZNRxzTRHGWxpdMoh5x
