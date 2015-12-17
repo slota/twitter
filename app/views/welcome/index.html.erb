@@ -1,20 +1,24 @@
 <h1>Welcome!</h1>
 
 <% if current_user %>
-  <p>Hello, <%= current_user.name %></p>
-  <%= image_tag @image %>
-  <%= @description %>
-  My followers count:<%= @followers_count %>
-  My friends count: <%= @friends_count %>
-  My tweet number: <%= @statuses_count %>
+  <p>Hello, <%= @user.name %></p>
+  <%= image_tag @user.profile_image_url %>
+  <%= @user.description %>
+  My followers count:<%= @user.followers_count %>
+  My friends count: <%= @user.friends_count %>
+  My tweet number: <%= @user.description %>
+<br><br>
+
+  Create New Tweet:
+  <p>
+  <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "Send Tweet" %>
+  <% end %>
+  </p>
 
 
-
-
-
-
-
-  <ul><% @tweets.each do |tweet| %>
+  <ul><% @twitter_data.user_timeline.take(10).each do |tweet| %>
     <li><%= tweet.text %></li>
   <% end %></ul>
   <%= link_to "Logout", logout_path %>
