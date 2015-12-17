@@ -19,7 +19,7 @@
     <% if current_user %>
       <h3><%= @user.name %></h3>
       <%= image_tag @user.profile_image_url %><br>
-      <h5><%= @user.description %><br></h5>
+      <em><%= @user.description %><br></em>
       My followers count:<%= @user.followers_count %><br>
       My friends count: <%= @user.friends_count %><br>
       My tweet number: <%= @user.statuses_count %><br>
