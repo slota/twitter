@@ -17,9 +17,9 @@
         <!-- Grey navigation panel -->
 
     <% if current_user %>
-      <p>Hello, <%= @user.name %></p>
+      <h3><%= @user.name %></h3>
       <%= image_tag @user.profile_image_url %><br>
-      <%= @user.description %><br>
+      <h5><%= @user.description %><br></h5>
       My followers count:<%= @user.followers_count %><br>
       My friends count: <%= @user.friends_count %><br>
       My tweet number: <%= @user.description %><br>
@@ -39,9 +39,20 @@
 
     <ul><% @twitter_data.user_timeline.take(10).each do |tweet| %>
       <li>
-        <%= tweet.text %>
-        Favorited:<%= tweet.favorite_count %>
-        <%= button_to "like", tweet_path(tweet.id), method: :put %>
+        <div class="row">
+        <div class="col s12  m10">
+          <div class="card blue">
+            <div class="card-content white-text">
+              <span class="card-title"><%= tweet.text %></span>
+            </div>
+            <div class="card-action">
+              Favorited:<%= tweet.favorite_count %>
+              <%= button_to "like", tweet_path(tweet.id), method: :put %>
+            </div>
+          </div>
+        </div>
+      </div>
+
       </li>
     <% end %></ul>
 
