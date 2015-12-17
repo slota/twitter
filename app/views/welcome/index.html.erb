@@ -9,17 +9,20 @@
   My tweet number: <%= @user.description %>
 <br><br>
 
-  Create New Tweet:
   <p>
   <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
     <%= f.text_field :message %>
-    <%= f.submit "Send Tweet" %>
+    <%= f.submit "Tweet" %>
   <% end %>
   </p>
 
 
   <ul><% @twitter_data.user_timeline.take(10).each do |tweet| %>
-    <li><%= tweet.text %></li>
+    <li>
+      <%= tweet.text %>
+      <%= button_to "like", tweet_path(tweet.id), method: :put %>
+      <%= tweet.favorite_count %>
+    </li>
   <% end %></ul>
   <%= link_to "Logout", logout_path %>
 <% else %>
