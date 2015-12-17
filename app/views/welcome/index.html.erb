@@ -1,12 +1,20 @@
-<h1>Welcome!</h1>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center"></a>
+    <a href="#" class="brand-logo">Welcome to Slota Twitter</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+    </ul>
+  </div>
+</nav>
 
 <% if current_user %>
   <p>Hello, <%= @user.name %></p>
-  <%= image_tag @user.profile_image_url %>
-  <%= @user.description %>
-  My followers count:<%= @user.followers_count %>
-  My friends count: <%= @user.friends_count %>
-  My tweet number: <%= @user.description %>
+  <%= image_tag @user.profile_image_url %><br>
+  <%= @user.description %><br>
+  My followers count:<%= @user.followers_count %><br>
+  My friends count: <%= @user.friends_count %><br>
+  My tweet number: <%= @user.description %><br>
 <br><br>
 
   <p>
@@ -14,8 +22,8 @@
     <%= f.text_field :message %>
     <%= f.submit "Tweet" %>
   <% end %>
-  </p>
 
+  </p>
 
   <ul><% @twitter_data.user_timeline.take(10).each do |tweet| %>
     <li>

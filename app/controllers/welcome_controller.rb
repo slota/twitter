@@ -7,11 +7,6 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def create
-
-  end
-
-
 end
 
 #tweets_for_user(current_user)

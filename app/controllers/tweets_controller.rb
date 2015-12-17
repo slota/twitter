@@ -5,7 +5,7 @@
     end
 
     def update
-      twitter_data.favorite(params[:id])
+      twitter_data.favorite(params[:id].to_i)
       redirect_to root_path
     end
 
