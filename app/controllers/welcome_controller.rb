@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     if current_user
+      
       @twitter_data = twitter_api(current_user)
       @user = current_user
     end
