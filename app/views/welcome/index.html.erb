@@ -1,66 +1,113 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center"></a>
-    <a href="#" class="brand-logo">Welcome to Slota Twitter</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-    <% if current_user%>
-      <%= link_to "Logout", logout_path %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-    <% end %>
-    </ul>
-  </div>
-</nav>
 
-<div class="row">
-  <div class="col s3">
-        <!-- Grey navigation panel -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-    <% if current_user %>
-      <h3><%= @user.name %></h3>
-      <%= image_tag @user.profile_image_url %><br>
-      <em><%= @user.description %><br></em>
-      My followers count:<%= @user.followers_count %><br>
-      My friends count: <%= @user.friends_count %><br>
-      My tweet number: <%= @user.statuses_count %><br>
-  </div>
-  <br><br>
+    <title>Starter Template for Bootstrap</title>
 
-  <div class="col s9">
-            <!-- Teal page content  -->
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <p>
-    <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
-      <%= f.text_field :message %>
-      <%= f.submit "Tweet" %>
-    <% end %>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    </p>
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
 
-    <ul><% @twitter_data.home_timeline.take(10).each do |tweet| %>
-      <li>
-        <div class="row">
-        <div class="col s12  m10">
-          <div class="card blue">
-            <div class="card-content white-text">
-              <img src="<%= tweet.user.profile_image_url  %>">
-              <h5><%= tweet.user.screen_name %></h5>
-              <% if tweet.media.present? %>
-              <img src="<%= tweet.media.first.media_url %>">
-              <% end %><br>
-              <span class="card-title"><%= tweet.text %></span>
-            </div>
-            <div class="card-action">
-              Favorited:<%= tweet.favorite_count %>
-              <%= button_to "like", tweet_path(tweet.id), method: :put %>
-            </div>
-          </div>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">Slota Twitter</a>
+        </div>
+        <div id="navbar">
+          <ul class="nav navbar-nav">
+            <% if current_user %>
+              <li><%= link_to "Logout", logout_path %></li>
+            <% else %>
+              <li><%= link_to "Login", login_path %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
+    </nav>
 
-      </li>
-    <% end %></ul>
+    <div class="container">
 
-  <% end %>
-  </d iv>
-</div>
+      <br><br><br>
+        <% if current_user %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+            <h3><%= @user.name %></h3>
+            <%= image_tag @user.profile_image_url %><br>
+            <!-- <em><%=  @user.description %><br></em> -->
+            Tweets
+            Following
+            Followers
+            <br>
+            <%= @user.statuses_count %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <%= @user.friends_count %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <%= @user.followers_count %>
+          </div>
+
+          <div class="col-sm-9">
+            <%= form_tag tweets_path, method: :post, class: 'input-group'  do %>
+              <%= text_field_tag :tweet, params[:search], class: 'form-control', placeholder: "What's happening?" %>
+              <span class="input-group-btn">
+                <%= submit_tag "Tweet!", class: "btn btn-default" %>
+              </span>
+            <% end %>
+
+            <% @twitter_data.home_timeline.take(10).each do |tweet| %>
+              <div class="thumbnail">
+                <div class="caption">
+                  <img src="<%= tweet.user.profile_image_url  %>">
+                  <h5><%= tweet.user.screen_name %></h5>
+                  <p> <%= tweet.text %></p>
+                  <p><a href="#" class="btn btn-primary" role="button">Like</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                <% if tweet.media.present? %>
+                  <img src="<%= tweet.media.first.media_url %>">
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+
+        <% else %>
+          <p class="lead">Welcome to SlotaTwitter<br> A practice in using the Twitter API</p>
+        <% end %>
+      </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
