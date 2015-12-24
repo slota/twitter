@@ -78,8 +78,20 @@
               </span>
             <% end %>
 
+            <% @twitter_data.home_timeline.take(10).each do |tweet| %>
+              <div class="thumbnail">
+                <div class="caption">
+                  <img src="<%= tweet.user.profile_image_url  %>">
+                  <h5><%= tweet.user.screen_name %></h5>
+                  <p> <%= tweet.text %></p>
+                  <p><a href="#" class="btn btn-primary" role="button">Like</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                <% if tweet.media.present? %>
+                  <img src="<%= tweet.media.first.media_url %>">
+                <% end %>
+              </div>
+            <% end %>
           </div>
-      </div>
 
 
         <% else %>
