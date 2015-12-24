@@ -1,6 +1,6 @@
   class TweetsController < ApplicationController
     def create
-      twitter_data.update(params[:tweet][:message])
+      twitter_data.update(params[:tweet])
       redirect_to root_path
     end
 
